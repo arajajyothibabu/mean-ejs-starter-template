@@ -33,4 +33,37 @@
         $scope.message = 'Look! I am an about page.';
     });
 
+    sampleApp.controller('searchController', function($scope, $timeout, $q, $log) {
+
+        var self = this;
+
+        self.simulateQuery = false;
+        self.isDisabled    = false;
+
+        self.users  = [];
+        self.querySearch   = querySearch;
+        self.selectedItemChange = selectedItemChange;
+        self.searchTextChange   = searchTextChange;
+
+        self.getAllUsers = getAllUsers;
+
+        function getAllUsers(user) {
+            alert("Sorry! You'll need to create a Constitution for " + user + " first!");
+            //TODO:
+        }
+
+        function querySearch (query) {
+            //TODO:
+        }
+
+        function searchTextChange(text) {
+            $log.info('Text changed to ' + text);
+        }
+
+        function selectedItemChange(item) {
+            $log.info('Item changed to ' + JSON.stringify(item));
+        }
+
+    });
+
 })();
