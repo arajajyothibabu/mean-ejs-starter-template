@@ -41,17 +41,26 @@
         self.isDisabled    = false;
 
         self.users  = [];
+        self.AutoCompleteUsers  = [];
         self.querySearch   = querySearch;
         self.selectedItemChange = selectedItemChange;
         self.searchTextChange   = searchTextChange;
 
         self.getAllUsers = getAllUsers;
 
+        /**
+         * Getting all matched users
+         * @param user
+         */
         function getAllUsers(user) {
             alert("Sorry! You'll need to create a Constitution for " + user + " first!");
             //TODO:
         }
 
+        /**
+         * Search for query Autocomplete
+         * @param query
+         */
         function querySearch (query) {
             //TODO:
         }

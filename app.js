@@ -30,7 +30,7 @@ MongoClient.connect(mongoDBUrl, function (err, database) {
     }
     db = database;
 
-    var index = require('./routes/index');
+    var index = require('./routes/index')(router, db);
     var users = require('./routes/users')(router, db);
 
     app.use('/', index);
