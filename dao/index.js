@@ -2,7 +2,7 @@
  * Created by jyothi on 26/7/17.
  */
 
-var usersCollection = "users";
+var usersCollection = "topic_intent";
 
 module.exports = {
     /**
@@ -14,7 +14,7 @@ module.exports = {
      */
     findAll: function (db, limit, cb, version) {
         version = version || 0;
-        db.collection(usersCollection).find({}).sort({repeats: -1}).skip(version * limit).limit(limit).toArray(function (err, res) {
+        db.collection(usersCollection).find({}).skip(version * limit).limit(limit).toArray(function (err, res) {
             console.log(err, res);
             if(typeof cb !== 'undefined'){
                 cb(err, res);
@@ -28,7 +28,7 @@ module.exports = {
      * @param cb
      */
     findUser: function (db, id, cb) {
-        db.collection(usersCollection).find({id: id}, function (err, res) {
+        db.collection(usersCollection).find({_id: id}, function (err, res) {
             console.log(err, res);
             if(typeof cb !== 'undefined'){
                 cb(err, res);
@@ -44,8 +44,8 @@ module.exports = {
      */
     search: function(db, query, limit, cb){
         db.collection(usersCollection).find({
-            "$text": {
-                "$search": query.trim()
+            "topic": {
+                "$regex": query.trim()
             }
         }).limit(limit || 24).toArray(function (err, res) {
             console.log(err, res);
